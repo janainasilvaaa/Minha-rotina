@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rotina da Janaina</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#7652d6">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Minha Rotina">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-content">
+
+        <div>
+            <span class="hello" id="greeting">Olá, Janaina!</span>
+
+            <h1>Minha rotina ✨</h1>
+
+            <p id="currentDate"></p>
+        </div>
+
+        <div class="header-icon">
+            💜
+        </div>
+
+    </div>
+</header>
+
+
+<main class="container">
+
+    <!-- RESUMO -->
+
+    <section class="dashboard">
+
+        <div class="summary-card">
+            <div class="summary-icon blue">
+                📋
+            </div>
+
+            <div>
+                <span>Rotina fixa</span>
+                <strong id="routinePercentage">0%</strong>
+            </div>
+        </div>
+
+
+        <div class="summary-card">
+            <div class="summary-icon purple">
+                ⭐
+            </div>
+
+            <div>
+                <span>Atividades extras</span>
+                <strong id="extraPercentage">0%</strong>
+            </div>
+        </div>
+
+
+        <div class="summary-card">
+            <div class="summary-icon pink">
+                🎯
+            </div>
+
+            <div>
+                <span>Metas do mês</span>
+                <strong id="goalPercentage">0%</strong>
+            </div>
+        </div>
+
+    </section>
+
+
+    <div class="main-grid">
+
+        <!-- COLUNA PRINCIPAL -->
+
+        <div>
+
+            <!-- ROTINA FIXA -->
+
+            <section class="card">
+
+                <div class="section-title">
+                    <div>
+                        <span class="section-label">ORGANIZAÇÃO</span>
+                        <h2>Rotina fixa</h2>
+                    </div>
+
+                    <button class="primary-button" onclick="addRoutine()">
+                        + Adicionar
+                    </button>
+                </div>
+
+
+                <div class="days" id="days"></div>
+
+
+                <div class="routine-header">
+                    <span>Horário</span>
+                    <span>Atividade</span>
+                    <span>Feito</span>
+                </div>
+
+
+                <div id="routineList"></div>
+
+
+                <div class="progress-section">
+
+                    <div class="progress-info">
+                        <span>Progresso de hoje</span>
+                        <strong id="routineProgressText">0%</strong>
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-bar" id="routineProgress"></div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ATIVIDADES EXTRAS -->
+
+            <section class="card">
+
+                <div class="section-title">
+                    <div>
+                        <span class="section-label">FLEXÍVEL</span>
+                        <h2>Atividades extras</h2>
+                    </div>
+                </div>
+
+                <p class="description">
+                    Coisas importantes que surgirem durante o dia.
+                </p>
+
+
+                <div class="extra-input">
+
+                    <input
+                        type="text"
+                        id="extraInput"
+                        placeholder="Ex.: Arrumar o quarto"
+                    >
+
+                    <button onclick="addExtra()">
+                        Adicionar
+                    </button>
+
+                </div>
+
+
+                <div id="extraList"></div>
+
+
+                <div class="progress-section">
+
+                    <div class="progress-info">
+                        <span>Meta de atividades extras</span>
+                        <strong id="extraProgressText">0%</strong>
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-bar purple-bar" id="extraProgress"></div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- DESEMPENHO SEMANAL -->
+
+            <section class="card">
+
+                <div class="section-title">
+
+                    <div>
+                        <span class="section-label">ACOMPANHAMENTO</span>
+                        <h2>Minha semana</h2>
+                    </div>
+
+                    <span class="week-total" id="weekTotal">
+                        0%
+                    </span>
+
+                </div>
+
+                <div class="week-chart" id="weekChart"></div>
+
+            </section>
+
+        </div>
+
+
+        <!-- SIDEBAR -->
+
+        <aside>
+
+            <!-- FRASE -->
+
+            <section class="card motivation">
+
+                <div class="motivation-icon">
+                    ✨
+                </div>
+
+                <span>Mensagem para você</span>
+
+                <p id="motivationalPhrase"></p>
+
+            </section>
+
+
+            <!-- LEMBRETES -->
+
+            <section class="card">
+
+                <div class="section-title">
+                    <div>
+                        <span class="section-label">ESTE MÊS</span>
+                        <h2>Lembretes</h2>
+                    </div>
+                </div>
+
+
+                <div class="input-group">
+
+                    <input
+                        type="text"
+                        id="reminderInput"
+                        placeholder="Novo lembrete..."
+                    >
+
+                    <button onclick="addReminder()">
+                        +
+                    </button>
+
+                </div>
+
+
+                <div id="reminderList"></div>
+
+            </section>
+
+
+            <!-- METAS -->
+
+            <section class="card">
+
+                <div class="section-title">
+
+                    <div>
+                        <span class="section-label">OBJETIVOS</span>
+                        <h2>Metas do mês</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <input
+                        type="text"
+                        id="goalInput"
+                        placeholder="Ex.: Ler 2 livros"
+                    >
+
+                    <button onclick="addGoal()">
+                        +
+                    </button>
+
+                </div>
+
+
+                <div id="goalList"></div>
+
+            </section>
+
+
+            <!-- FRASE FINAL -->
+
+            <section class="mini-card">
+
+                <span>🌷</span>
+
+                <p>
+                    Pequenos passos todos os dias
+                    também levam você muito longe.
+                </p>
+
+            </section>
+
+        </aside>
+
+    </div>
+
+</main>
+
+
+<footer>
+    Feito para a rotina da Janaina 💙💜
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
